@@ -315,100 +315,29 @@ end
 
 
 --[[
+Import should look like this
 
-CD SPELL ID's
-70940, -- "Divine Sacrifice"
-31821, -- "Aura Mastery"
-10278, -- "Hand of Protection"
-642,   -- "Divine Shield"
-64843, -- "Divine Hymn"
-64843, -- "Pain Suppression"
-6940,  -- "Hand of Sacrifice"
-47788, -- "Guardian Spirit"
-1766, -- "Kick" > Change based on class in RECIEVER
+    bossSpellId,order,playerName,cdToUse,delay,amVariant,targetName,customSound
 
-AURA SPELL ID's
-19746, -- Concentration Aura
-48947, -- Fire Resistance Aura 
-48943, -- Shadow Resistance Aura 
-48945, -- Frost Resistance Aura 
+        bossSpellId = the boss ability spell ID
+        order = the Order to use the assignments 1 = the first time the boss uses a spell
+        playerName = the name of the character being assigned
+        cdToUse = spell ID of the assigned CD that the player should use
+        delay = delay in seconds when to use the CD (in seconds), default to 1
+        amVariant = IF the cdToUse is Aura Mastery, this should be assigned to the spell 
+        ID of the AURA to use with Aura Mastery, otherwise 0
+        targetNAme = if you have an assignment with a targeted player in mind you can set the name here, default value ""
+        customSound = the path to the custom sound. This should be set to default if no custom sound are given!
 
+EXAMPLE WITH NO CUSTOM SOUND:
+48785,1,Kozroth,70940,1,0,"",default,
+EXAMPLE WITH NO CUSTOM SOUND, WITH TARGETNAME:
+48785,2,Kozroth,10278,1,0,"Cozroth",default,
+-----------------------------------------
 
-
-print("|cfffe7a00","[Cozroth-Sender]:", "|r|CFF58b164","Successfully generated Assignments from Imported String","|r")
-
---Import should look like this 
-
-bossSpellId,order,playerName,cdToUse,delay,amVariant,customSound
-
-bossSpellId = the boss ability spell ID
-order = the Order to use the assignments 1 = the first time the boss uses a spell
-playerName = the name of the character being assigned
-cdToUse = spell ID of the assigned CD that the player should use
-delay = delay in seconds when to use the CD (in seconds), default to 1
-amVariant = IF the cdToUse is Aura Mastery, this should be assigned to the spell ID of the AURA to use with Aura Mastery, otherwise 0
-customSound = the name of the customSound (not yet implemented)
-
-48785,1,Kozroth,70940,1,0,
-48785,2,Kozroth,10278,1,0,
-48785,2,Kozroth,1766,1,0,
-48782,1,Kozroth,31821,1,19746,
-
-
-
-"66331,4,Oyamii,64843,9,0,default,
-66901,1,Savhroux,70940,1,0,default,
-66901,1,Savroux,70940,1,0,default,
-66901,1,Valanyrgoat,70940,1,0,default,
-66901,1,Lyphiä,70940,1,0,default,
-66902,1,Savhroux,31821,1,48947,default,
-66902,1,Savroux,31821,1,48947,default,
-66902,1,Valanyrgoat,31821,1,48947,default,
-66902,1,Lyphiä,31821,1,48947,default,
-66336,1,Savhroux,31821,1,19746,default,
-66336,2,Savhroux,642,1,0,default,
-66336,1,Savroux,31821,1,19746,default,
-66336,2,Savroux,642,1,0,default,
-66336,1,Valanyrgoat,31821,1,19746,default,
-66336,2,Valanyrgoat,642,1,0,default,
-66336,1,Lyphiä,31821,1,19746,default,
-66336,2,Lyphiä,642,1,0,default,
-66532,1,Ender,1766,1,0,default,
-66532,1,Drakkw,1766,1,0,default,
-66532,1,Danira,1766,1,0,default,
-66532,1,Gosubob,1766,1,0,default,
-66532,2,Avrillavigne,1766,1,0,default,
-66532,2,Dödast,1766,1,0,default,
-66532,2,Ragemourne,1766,1,0,default,
-66532,2,Cozrothbröd,1766,1,0,default,
-66058,1,Savhroux,70940,6,0,default,
-66058,1,Savroux,70940,6,0,default,
-66058,1,Valanyrgoat,70940,6,0,default,
-66058,1,Lyphiä,70940,6,0,default,
-66046,1,Ronéine,70940,6,0,default,
-66046,1,Roné,70940,6,0,default,
-66046,1,Scorey,70940,6,0,default,
-66046,1,Drakkp,70940,6,0,default,
-66134,1,Scorey,1766,2,0,default,
-66134,1,Danira,1766,2,0,default,
-66134,1,Ragemourne,1766,2,0,default,
-66134,1,Drakks,1766,2,0,default,
-66134,1,Cozrothm,1766,2,0,default,
-66134,1,Psychopompa,1766,2,0,default,
-66134,1,Atazro,1766,2,0,default,
-66134,1,Valanyrgoat,1766,2,0,default,
-69586,1,Ender,1766,2,0,default,
-69586,1,Drakkw,1766,2,0,default,
-69586,1,Danira,1766,2,0,default,
-69586,1,Gosubob,1766,2,0,default,
-69586,1,Avrillavigne,1766,2,0,default,
-69586,1,Dödast,1766,2,0,default,
-69586,1,Ragemourne,1766,2,0,default,
-69586,1,Cozrothbröd,1766,2,0,default,
-[66532,2,
-66134,2,
-69586,1,]"
-
-
+EXAMPLE WITH A CUSTOM SOUND:
+48785,2,Kozroth,1766,1,0,"",Interface\Addons\FolderPathToYourSound\sound\Divine Hymn.ogg,
+EXAMPLE WITH A CUSTOM SOUND, WITH TARGETNAME:
+48782,1,Kozroth,31821,1,19746,"Cozroth",Interface\Addons\FolderPathToYourSound\sound\Aura Mastery.ogg,
+-----------------------------------------
 --]]
-
