@@ -229,7 +229,6 @@ end
 aura_env.getImportedAssignments = function()
     
     local rawImport = strtrim(aura_env.config.ImportOptions.assignments, " \"\t\r\n")
-    --local importString = strtrim(aura_env.config.ImportOptions.assignments, " \"\t\r\n")
     local assignmentsImport = ""
     local countersImport = ""
     local inCounters = false
