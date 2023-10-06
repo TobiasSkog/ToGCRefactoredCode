@@ -13,7 +13,8 @@ function(event, encounterId, encounterName, difficultyID, groupSize, instanceID)
                 SpellCastStart = aura_env.abl_tbl.SpellCastStart,
                 SpellCastSuccess = aura_env.abl_tbl.SpellCastSuccess,
                 SpellAuraAppliedRemoved = aura_env.abl_tbl.SpellAuraAppliedRemoved,
-            }    
+                SpellSummon = aura_env.abl_tbl.SpellSummon,
+            }
             for spellType, spellIdTable in pairs(spellIds) do
                 if spellIdTable then
                     for bossSpellId in pairs(spellIdTable) do
